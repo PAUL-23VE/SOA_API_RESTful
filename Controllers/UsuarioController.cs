@@ -61,4 +61,17 @@ public class UsuarioController : ControllerBase
 
         return Ok(usuario);
     }
+
+    [HttpDelete("{username}")]
+    public IActionResult Delete(string username)
+    {
+        var usuario = usuarios.FirstOrDefault(u => u.Username == username);
+        if (usuario == null)
+        {
+            return NotFound("Usuario no encontrado.");
+        }
+
+        usuarios.Remove(usuario);
+        return Ok("Usuario eliminado exitosamente.");
+    }
 }
