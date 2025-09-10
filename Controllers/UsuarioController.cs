@@ -15,4 +15,20 @@ public class UsuarioController : ControllerBase
     [HttpGet]
     public IActionResult Get() => Ok(usuarios);
 
+    [HttpPost]
+    public IActionResult Post([FromBody] Usuario nuevoUsuario)
+    {
+        if (nuevoUsuario == null || string.IsNullOrWhiteSpace(nuevoUsuario.Username) || string.IsNullOrWhiteSpace(nuevoUsuario.Password))
+        {
+            return BadRequest("Datos de usuario inválidos.");
+        }
+
+        if (usuarios.Any(u => u.Username == nuevoUsuario.Username))
+        {
+            return Conflict("El nombre de usuario ya existe.");
+        }
+
+        usuarios.Add(nuevoUsuario);
+        return CreatedAtAction(nameof(Get), new { username = nuevoUsuario.Username }, nuevoUsuario);
+    }
 }
