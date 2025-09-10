@@ -1,0 +1,6 @@
+@SOA_API_RESTful_HostAddress = http://localhost:5022
+
+GET {{SOA_API_RESTful_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
