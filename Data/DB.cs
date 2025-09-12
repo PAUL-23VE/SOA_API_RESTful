@@ -4,7 +4,7 @@ namespace SOA_API_RESTful.Data
 {
     public static class DB
     {
-        private static string connectionString = "Server=localhost;Database=soa_db;User=root;Password=tu_password;";
+        private static string connectionString = "Server=localhost;Port=3311;Database=soa_db;User=root;Password=davidgiler21;";
 
         public static MySqlConnection GetConnection()
         {
