@@ -1,4 +1,3 @@
-
 namespace SOA_API_RESTful
 {
     public class Program
@@ -8,23 +7,21 @@ namespace SOA_API_RESTful
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            
-            // Agregar CORS para permitir peticiones desde el frontend
+
+            // CORS: permitir todo
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader();
-                    });
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
             });
-            
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            // Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -38,15 +35,14 @@ namespace SOA_API_RESTful
             }
 
             app.UseHttpsRedirection();
-            
+
             // Habilitar archivos estáticos
             app.UseStaticFiles();
-            
-            // Usar CORS
+
+            // ⚡ Usar CORS (muy importante: antes de Authorization y MapControllers)
             app.UseCors("AllowAll");
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
