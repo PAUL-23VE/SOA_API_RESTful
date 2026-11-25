@@ -40,4 +40,4 @@ Abre Swagger en `/swagger` para probar los endpoints.
 
 ---
 
-<sub>⚽ Parte del portafolio de **Paul Velastegui** · [paul-23ve.github.io](https://paul-23ve.github.io) · [GitHub](https://github.com/PAUL-23VE)</sub>
+<sub>Parte del portafolio de **Paul Velastegui** · [paul-23ve.github.io](https://paul-23ve.github.io) · [GitHub](https://github.com/PAUL-23VE)</sub>
